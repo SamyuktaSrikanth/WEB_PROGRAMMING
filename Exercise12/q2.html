@@ -1,0 +1,126 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Analog Clock with Time Numbers and Markings</title> 
+    <style> 
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            background-color: #f0f0f0; 
+        } 
+        canvas { 
+            border: 5px solid black; 
+            border-radius: 50%; 
+            background-color: white; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+<canvas id="clockCanvas" width="400" height="400"></canvas> 
+ 
+<script> 
+    const canvas = document.getElementById('clockCanvas'); 
+    const ctx = canvas.getContext('2d'); 
+ 
+    const radius = canvas.width / 2; 
+    ctx.translate(radius, radius); // Move the origin to the center of the canvas 
+ 
+    function drawClock() { 
+        ctx.clearRect(-radius, -radius, canvas.width, canvas.height); 
+ 
+        const now = new Date(); 
+        const hours = now.getHours(); 
+        const minutes = now.getMinutes(); 
+        const seconds = now.getSeconds(); 
+ 
+        drawFace(); 
+        drawNumbers(); 
+        drawTimeMarks(); 
+        drawTime(hours, minutes, seconds); 
+    } 
+ 
+    function drawFace() { 
+        ctx.beginPath(); 
+        ctx.arc(0, 0, radius - 10, 0, 2 * Math.PI); 
+        ctx.fillStyle = '#fff'; 
+        ctx.fill(); 
+        ctx.lineWidth = 5; 
+        ctx.strokeStyle = '#000'; 
+        ctx.stroke(); 
+    } 
+ 
+    function drawNumbers() { 
+        ctx.font = "20px Arial"; 
+        ctx.textAlign = "center"; 
+        ctx.textBaseline = "middle"; 
+        for (let num = 1; num <= 12; num++) { 
+            const angle = (num * Math.PI / 6) - Math.PI / 2; // Adjust angle to start from 12 o'clock 
+            const x = (radius - 40) * Math.cos(angle); 
+            const y = (radius - 40) * Math.sin(angle); 
+            ctx.fillStyle = "#000"; // Color for the hour numbers 
+            ctx.fillText(num, x, y); 
+        } 
+    } 
+ 
+    function drawTimeMarks() { 
+        // Draw the minute marks (small lines) 
+        for (let i = 0; i < 60; i++) { 
+            const angle = i * Math.PI / 30; 
+            const x1 = (radius - 10) * Math.cos(angle); 
+            const y1 = (radius - 10) * Math.sin(angle); 
+            const x2 = (radius - 20) * Math.cos(angle); 
+            const y2 = (radius - 20) * Math.sin(angle); 
+ 
+            ctx.beginPath(); 
+            ctx.moveTo(x1, y1); 
+            ctx.lineTo(x2, y2); 
+            ctx.lineWidth = 2; 
+            ctx.strokeStyle = i % 5 === 0 ? '#000' : '#ddd';  // Hour marks are black, minute marks are gray 
+            ctx.stroke(); 
+        } 
+    } 
+ 
+    function drawTime(hours, minutes, seconds) { 
+        const hourAngle = (Math.PI / 6) * (hours % 12 + minutes / 60); 
+        const minuteAngle = (Math.PI / 30) * (minutes + seconds / 60); 
+        const secondAngle = (Math.PI / 30) * seconds; 
+ 
+        // Hour hand 
+        ctx.lineWidth = 8; 
+        ctx.strokeStyle = 'black'; 
+        ctx.beginPath(); 
+        ctx.moveTo(0, 0); 
+        ctx.lineTo((radius - 60) * Math.cos(hourAngle - Math.PI / 2), (radius - 60) * 
+Math.sin(hourAngle - Math.PI / 2)); 
+        ctx.stroke(); 
+ 
+        // Minute hand 
+        ctx.lineWidth = 6; 
+        ctx.strokeStyle = 'blue'; 
+        ctx.beginPath(); 
+        ctx.moveTo(0, 0); 
+        ctx.lineTo((radius - 40) * Math.cos(minuteAngle - Math.PI / 2), (radius - 40) * 
+Math.sin(minuteAngle - Math.PI / 2)); 
+        ctx.stroke(); 
+ 
+        // Second hand 
+        ctx.lineWidth = 2; 
+        ctx.strokeStyle = 'red'; 
+        ctx.beginPath(); 
+        ctx.moveTo(0, 0); 
+        ctx.lineTo((radius - 20) * Math.cos(secondAngle - Math.PI / 2), (radius - 20) * 
+Math.sin(secondAngle - Math.PI / 2)); 
+        ctx.stroke(); 
+    } 
+ 
+    setInterval(drawClock, 1000); // Update the clock every second 
+</script> 
+ 
+</body> 
+</html> 
