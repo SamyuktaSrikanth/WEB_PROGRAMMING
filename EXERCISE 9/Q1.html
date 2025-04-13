@@ -1,0 +1,42 @@
+<html>
+    <body>
+        <h1>Temperature Analysis</h1>
+        <table border=3px cellspacing="0">
+            <thead>
+            <tr>
+                <th>Temperature(F)</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+        <script>
+            HOT=0
+            PLEASANT=0
+            COLD=0
+            temp=[55,62,68,74,59,45,41,58,60,67,65,78,82,88,91,92,90,93,87,80,78,79,72,68,61,59,55,65]
+            for(let i=0;i<temp.length;i++)
+            {
+                if(temp[i]>=85)
+                {
+                    HOT++
+                    value=`<tr><td>${temp[i]}</td><td>Hot</td></tr>`
+                }
+                else if(temp[i]>=60 && temp[i]<=85)
+                {
+                    PLEASANT++
+                     value=`<tr><td>${temp[i]}</td><td>Pleasant</td></tr>`
+                }
+                else
+                {
+                    COLD++
+                     value=`<tr><td>${temp[i]}</td><td>Cold</td></tr>`
+                }
+                document.getElementById("tableBody").innerHTML+=value
+            }
+            document.write(`Number of Hot Days: ${HOT}<br><br>`)
+            document.write(`Number of Pleasant Days: ${PLEASANT}<br><br>`)
+            document.write(`Number of Cold Days: ${COLD}`)
+        </script>
+    </body>
+</html>

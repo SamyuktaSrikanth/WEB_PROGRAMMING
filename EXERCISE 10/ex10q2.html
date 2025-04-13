@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selection Methods</title>
+</head>
+<body>
+
+    <!-- Add an id to the h1 tag so it's properly selected -->
+    <h1 id="h1">Original Title</h1>
+
+    <input type="text" name="username" value="">
+
+    <label>
+        <input type="radio" name="gender" value="male"> Male
+    </label>
+    <label>
+        <input type="radio" name="gender" value="female"> Female
+    </label>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <p class="info">This is the first info paragraph.</p>
+    <p class="info">This is the second info paragraph.</p>
+
+    <div class="input-field">Input Field 1</div>
+    <div class="input-field">Input Field 2</div>
+
+    <label>
+        <input type="checkbox" class="hobby" value="Reading"> Reading
+    </label>
+    <label>
+        <input type="checkbox" class="hobby" value="Music"> Music
+    </label>
+    
+    <button onclick="performActions()">Perform Actions</button>
+
+    <script>
+        function performActions() {
+            // (a) Using getElementById: 
+            const h1 = document.getElementById('h1');
+            h1.textContent = "Updated Title"; // Change the text of <h1>
+
+            // (b) Using getElementsByName:
+            // Select the input field with name="username"
+            const usernameInput = document.getElementsByName('username')[0];
+            usernameInput.value = "John Doe"; // Set its value
+
+            // Select all radio buttons with the name 'gender' and print selected value
+            const genderRadioButtons = document.getElementsByName('gender');
+            let selectedGender = null;
+            for (let i = 0; i < genderRadioButtons.length; i++) {
+                if (genderRadioButtons[i].checked) {
+                    selectedGender = genderRadioButtons[i].value;
+                }
+            }
+            console.log("Selected gender: " + selectedGender);
+
+            // (c) Using getElementsByTagName:
+            // Count and print total number of <p> elements on the page
+            const pElements = document.getElementsByTagName('p');
+            console.log("Total <p> elements: " + pElements.length);
+
+            // Select all <li> elements inside <ul> and print their text content
+            const liElements = document.getElementsByTagName('li');
+            for (let li of liElements) {
+                console.log("LI text: " + li.textContent);
+            }
+
+            // (d) Using getElementsByClassName:
+            // Change the background color of all elements with the class 'input-field'
+            const inputFields = document.getElementsByClassName('input-field');
+            for (let inputField of inputFields) {
+                inputField.style.backgroundColor = 'lightblue';
+            }
+
+            // (e) Using querySelector:
+            // Select the first <p> element with the class 'info' and update its text
+            const firstInfoP = document.querySelector('.info');
+            firstInfoP.textContent = "This is the first info paragraph";
+
+            // Select the first radio button with the name 'gender' and check it programmatically
+            const firstGenderRadio = document.querySelector('input[name="gender"]');
+            firstGenderRadio.checked = true;
+
+            // (f) Using querySelectorAll:
+            // Select all <p> elements with the class 'info' and print their text content
+            const allInfoPs = document.querySelectorAll('.info');
+            allInfoPs.forEach(p => {
+                console.log("Info paragraph: " + p.textContent);
+            });
+
+            // Select all checkboxes with the class 'hobby', loop through them, set checked, and print the checked values
+            const hobbyCheckboxes = document.querySelectorAll('.hobby');
+            hobbyCheckboxes.forEach(checkbox => {
+                checkbox.checked = true;
+                console.log("Checked hobby: " + checkbox.value);
+            });
+        }
+    </script>
+
+</body>
+</html>

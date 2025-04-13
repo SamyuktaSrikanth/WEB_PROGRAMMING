@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <form>
+    Adults (Rs.10 each)<br>
+    <input id="adult" type="text"><br>
+    Children (Rs.5 each)<br>
+    <input id="child" type="text"><br><br>
+    <button type="submit" onclick="calculateTotal()">Total</button>
+    <div id="output" style="border: 5px solid black;display:inline-block; margin-top: 10px; padding: 5px;"></div>
+  </form>
+
+  <script>
+    function calculateTotal() {
+      event.preventDefault();
+      n1 = document.getElementById("adult").value ;
+      n2 = document.getElementById("child").value ;
+
+      total = (parseInt(n1) * 10) + (parseInt(n2) * 5);
+      document.getElementById("output").innerHTML = `Total: Rs.${total}`;
+    }
+  </script>
+</body>
+</html>

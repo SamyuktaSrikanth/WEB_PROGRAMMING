@@ -1,0 +1,36 @@
+table
+{
+    background:#9bcfe8;
+    width:300px;
+    height:250px;
+}
+#textbox{
+    background-color: #7da7bd;
+    width: 240px;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+}
+.class1{background-color: #feeff4;}
+#equal{background-color:#f1fe92;}
+#one
+{
+    background-color: #9a88f6;
+    color: white;
+}
+#C{
+    background-color: #fe9faa;
+    color: white;
+}
+.button
+{
+    width: 65px;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0px 5px #769fb5;
+}
+.button:hover
+{
+    background-color: #7da7bd;
+}

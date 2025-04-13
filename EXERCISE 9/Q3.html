@@ -1,0 +1,108 @@
+<html>
+    <body>
+        <table border="3px" cellspacing="0px">
+            <tr>
+                <td>BMI Calculator 
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="weight"><b>Enter Your Weight:</b></label><br>
+                    (in pounds) <input id="weight" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="feet"><b>Enter Your Height:</b></label><br>
+                    (feet) <input id="feet" type="text"><br><br>
+                    (inches) <input id="inches" type="text"><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="calculate()">Calculate</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <label for="BMI"><b>Your BMI</b></label><br>
+                <div id="BMI" style="border: 3px solid black;display:inline-block"></div><br><br>
+                </td>
+            </tr>
+        </table>
+        <script>
+            function calculate()
+            {
+               feet=parseInt(document.getElementById("feet").value)
+               inches=parseInt(document.getElementById("inches").value)
+               height= (feet*12) + inches
+               weight=parseInt(document.getElementById("weight").value)
+               BMI=(703*weight)/(height*height)
+               document.getElementById("BMI").innerHTML=BMI
+               gender=document.getElementById("gender").value
+               category(BMI,gender)
+            }
+            function category(BMI,gender)
+            {
+                if(gender=="female")
+                {
+                    if(BMI<=17.50)
+                    {
+                        alert("Anorexia")
+                    }
+                    else if(BMI>=17.51 && BMI<=19.10)
+                    {
+                        alert("UnderWeight")
+                    }
+                    else if(BMI>=19.11 && BMI<=25.80)
+                    {
+                        alert("Ideal")
+                    }
+                    else if(BMI>=25.81 && BMI<=27.30)
+                    {
+                        alert("Marginally Overweight")
+                    }
+                    else if(BMI>=27.31 && BMI<=32.30)
+                    {
+                        alert("Overweight")
+                    }
+                    else
+                    {
+                        alert("Obese/Very Overweight")
+                    }
+                }
+                else 
+                {
+                    if(BMI<=17.50)
+                    {
+                        alert("Anorexia")
+                    }
+                    else if(BMI>=17.501 && BMI<=20.70)
+                    {
+                        alert("UnderWeight")
+                    }
+                    else if(BMI>=20.71 && BMI<=26.40)
+                    {
+                        alert("Ideal")
+                    }
+                    else if(BMI>=26.41 && BMI<=27.80)
+                    {
+                        alert("Marginally Overweight")
+                    }
+                    else if(BMI>=27.81 && BMI<=31.10)
+                    {
+                        alert("Overweight")
+                    }
+                    else
+                    {
+                        alert("Obese/Very Overweight")
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

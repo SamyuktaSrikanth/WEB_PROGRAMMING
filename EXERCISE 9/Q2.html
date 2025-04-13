@@ -1,0 +1,62 @@
+<html>
+    <body>
+        <h1>Airline Ticket Reservation</h1><br>
+        <button onclick="userInput()">Book A Ticket</button>
+        <h2>Boarding Pass:</h2><br>
+        Passenger: <div id="name"></div><br>
+        Seat Number: <div id="seat"></div><br>
+        Class: <div id="class"></div><br>
+    </body>
+    <script>
+        seatAvailability=[0,0,0,0,0,0,0,0,0,0]
+        ptr1=1
+        ptr2=6
+        function userInput()
+        {
+            type=prompt("Enter 1 for First Class (Seats 1-5) or 2 for Economy (Seats 6-10):")
+        
+            if(type=="1")
+            {
+                bookFirstClass()
+            }
+            else if(type=="2")
+            {
+                bookEconomy()
+            }
+            else
+            {
+                alert("Invalid Choice!")
+            }
+        }
+        function bookFirstClass()
+        {
+            if(ptr1>5)
+            {
+                alert("First Class Tickets are booked! Do you want to book Economy Tickets?")
+            }
+            else
+            {
+                name=prompt("Enter Name: ")
+                document.getElementById("name").innerHTML=name
+                document.getElementById("seat").innerHTML=ptr1
+                document.getElementById("class").innerHTML="First-Class"
+                ptr1++
+            }
+        }
+        function bookEconomy()
+        {
+            if(ptr2>10)
+            {
+                alert("Economy Tickets are booked! Do you want to book First-Class Tickets?")
+            }
+            else
+            {
+                name=prompt("Enter Name: ")
+                document.getElementById("name").innerHTML=name
+                document.getElementById("seat").innerHTML=ptr2
+                document.getElementById("class").innerHTML="Economy"
+                ptr2++
+            }
+        }
+    </script>
+</html>

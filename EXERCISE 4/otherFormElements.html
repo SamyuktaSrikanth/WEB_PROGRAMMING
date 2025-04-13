@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+        <form>
+        <fieldset>
+            <br><br>
+            <legend align="top"><b><font color="red">Personal Details</font></b></legend>
+            <label for="name">Name&nbsp&nbsp&nbsp: </label>
+            <input type="text" name="name"><br><br>
+            <label for="pwd">Password &nbsp&nbsp:</label>
+            <input type="password" name="pwd"><br><br>
+            <label for="email">Email-id &nbsp:</label>
+            <input type="email" name="email"><br><br>
+            <label for="gender">Gender   :</label>
+            <input type="radio" name="gender" value="Male">Male &nbsp
+            <input type="radio" name="gender" value="Female">Female<br><br>
+            <label for="date">DOB   &nbsp&nbsp&nbsp:</label>&nbsp&nbsp
+            <input type="date" name="date"><br><br>
+            <label for="phone">Mobile &nbsp&nbsp :</label>&nbsp&nbsp
+            <input type="tel" name="phone"><br><br>
+        </fieldset>
+        <br><br>
+        <fieldset>
+            <br><br>
+            <legend align="top"><b><font color="red">Educational Qualifications</font></b></legend>
+            <label for="degree">Degree: </label>
+            <select name="degree">
+                <optgroup label="UG">
+                <option>BE
+                <option> BTech
+                <option>BSC
+                <option>BA
+                <option>BCA
+                <option>BBA
+                <option> Others
+                </optgroup>
+                <optgroup label="PG">
+                    <option>ME
+                    <option> MTech
+                    <option> MSc
+                    <option>MA
+                    <option>MCA
+                    <option> MBA
+                    <option> Others
+                    </optgroup>
+                    <optgroup label="PhD">
+                        <option>Engineering
+                        <option> Science
+                        <option>Management
+                        <option>Others
+                        </optgroup>
+            </select>
+            <label for="specs">Engineering: </label>
+            <input list="spec" name="specs">
+            <datalist id="spec">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="CIVIL">CIVIL</option>
+                <option value="MECH">MECH</option>
+            </datalist>
+        </fieldset>
+        <label for="hobbies">Hobbies  :</label>
+            <input type="checkbox" name="hobbies" >Playing Chess &nbsp
+            <input type="checkbox" name="hobbies" >Reading Books<br><br>
+        <label for="color">Favourite Color   &nbsp&nbsp&nbsp:</label>&nbsp&nbsp
+        <input type="color" name="color"><br><br>
+        <label for="add"><font color="red"><b>Address</b></font>  &nbsp&nbsp&nbsp:</label>&nbsp&nbsp<br><br>
+        <textarea name="add"></textarea> <br><br>
+        <label for="resume">Attach Resume: &nbsp&nbsp&nbsp</label>
+        <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx" required>
+        <button type="submit">Submit</button>
+    </body>    
+</html>
